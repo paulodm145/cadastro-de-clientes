@@ -16,12 +16,12 @@ class ClientesFactory extends Factory
     {
         return [
             'name'          => $this->faker->name(),
-            'cpfcnpj'       => mt_rand(0,1) == 1 ? $this->faker->cpf(false) : $this->faker->cnpj(false),
+            'cpfcnpj'       => mt_rand(0, 1) == 1 ? $this->faker->cpf(false) : $this->faker->cnpj(false),
             'birth_date'    => $this->faker->date(),
             'telephone'     => $this->faker->phoneNumberCleared(),
             'address'       => $this->faker->streetAddress(),
             'district'      => 'Bairro '.$this->faker->name(),
-            'number'        => mt_rand(1,1000),
+            'number'        => mt_rand(1, 1000),
             'complement'    => '',
             'city'          => '3201506',
             'state'         => '32',

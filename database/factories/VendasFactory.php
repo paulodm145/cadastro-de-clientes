@@ -14,7 +14,7 @@ class VendasFactory extends Factory
     public function definition()
     {
         return [
-            "cliente_id" => mt_rand(1,100),
+            "cliente_id" => mt_rand(1, 100),
         ];
     }
 }
