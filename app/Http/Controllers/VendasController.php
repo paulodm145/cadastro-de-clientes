@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendas;
+use App\Repository\VendasRepository;
 use Illuminate\Http\Request;
 
 class VendasController extends Controller
 {
+    private $vendasRepository;
+
+    public function __construct(VendasRepository $vendasRepository)
+    {
+        $this->vendasRepository = $vendasRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class VendasController extends Controller
      */
     public function index()
     {
-        //
+        return $this->vendasRepository->findAll();
     }
 
     /**

@@ -3,83 +3,57 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produtos;
+use App\Repository\ProdutoRepository;
 use Illuminate\Http\Request;
+use App\Repository\VendasRepository;
 
 class ProdutosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $productsRepository;
+
+    public function __construct(ProdutoRepository $productsRepository)
+    {
+        $this->productsRepository = $productsRepository;
+    }
+
     public function index()
     {
-        //
+        return $this->productsRepository->findAll();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            return $this->productsRepository->store($request->all());
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()],400);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Produtos  $produtos
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Produtos $produtos)
+    public function show(int $id)
     {
-        //
+        try {
+            return $this->productsRepository->findById($id);
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()],400);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Produtos  $produtos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Produtos $produtos)
+    public function update(int $id, Request $request)
     {
-        //
+        try {
+            return $this->productsRepository->update($id, $request->all());
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()],400);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Produtos  $produtos
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Produtos $produtos)
+    public function destroy(int $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Produtos  $produtos
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Produtos $produtos)
-    {
-        //
+        try {
+            return response()->json($this->productsRepository->delete($id), 204);
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()],400);
+        }
     }
 }
