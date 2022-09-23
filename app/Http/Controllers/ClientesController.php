@@ -31,7 +31,7 @@ class ClientesController extends Controller
         try {
             return $this->clientesService->findById($id);
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 
@@ -40,7 +40,7 @@ class ClientesController extends Controller
         try {
             return $this->clientesService->store($request->all());
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 
@@ -49,7 +49,7 @@ class ClientesController extends Controller
         try {
             return $this->clientesService->update($id, $request->all());
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 
@@ -58,7 +58,7 @@ class ClientesController extends Controller
         try {
             return response()->json($this->clientesService->delete($id), 204);
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 }

@@ -14,7 +14,7 @@ class ClienteRepository
 
     public function __construct(Clientes $cliente)
     {
-       $this->cliente = $cliente;
+        $this->cliente = $cliente;
     }
 
     public function findAll()
@@ -68,6 +68,4 @@ class ClienteRepository
         $cliente->save();
         return $cliente;
     }
-
-
 }

@@ -24,6 +24,5 @@ class ClienteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 }

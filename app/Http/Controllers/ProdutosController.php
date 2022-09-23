@@ -26,7 +26,7 @@ class ProdutosController extends Controller
         try {
             return $this->productsRepository->store($request->all());
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 
@@ -35,7 +35,7 @@ class ProdutosController extends Controller
         try {
             return $this->productsRepository->findById($id);
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 
@@ -44,7 +44,7 @@ class ProdutosController extends Controller
         try {
             return $this->productsRepository->update($id, $request->all());
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 
@@ -53,7 +53,7 @@ class ProdutosController extends Controller
         try {
             return response()->json($this->productsRepository->delete($id), 204);
         } catch (\Exception $e) {
-            return response()->json(["erro" => $e->getMessage()],400);
+            return response()->json(["erro" => $e->getMessage()], 400);
         }
     }
 }

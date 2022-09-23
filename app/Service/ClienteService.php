@@ -21,7 +21,9 @@ class ClienteService
 
     public function findById(int $id)
     {
-        if (!$this->clientesRepository->findById($id)) throw new BadRequestHttpException("Cliente não encontrado");
+        if (!$this->clientesRepository->findById($id)) {
+            throw new BadRequestHttpException("Cliente não encontrado");
+        }
         return $this->clientesRepository->findById($id);
     }
 
@@ -58,5 +60,4 @@ class ClienteService
             return response()->json(["erro" => $e->getMessage()]);
         }
     }
-
 }

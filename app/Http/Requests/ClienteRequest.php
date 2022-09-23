@@ -108,6 +108,4 @@ class ClienteRequest extends FormRequest
             'email.unique' => 'O Campo EMAIL deve ser único'
         ];
     }
-
-
 }
